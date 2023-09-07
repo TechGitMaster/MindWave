@@ -7,7 +7,7 @@ function* callDataNavi(){
     try{
         const obj = {
             method: 'POST',
-            url: 'http://localhost:4000/getAll',
+            url: 'https://mindwave-server.vercel.app/getAll',
             params: {},
             data: {},
             headers: {

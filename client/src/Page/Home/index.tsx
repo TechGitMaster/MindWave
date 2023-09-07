@@ -47,7 +47,7 @@ const Home = () => {
             try{
                 const obj = {
                     method: 'POST',
-                    url: 'http://localhost:4000/byIDs',
+                    url: 'https://mindwave-server.vercel.app/byIDs',
                     params: {},
                     data: { IdDB: _ids },
                     headers: {
@@ -94,7 +94,7 @@ const Home = () => {
 
             let obj = {
                 method: 'POST',
-                url: 'http://localhost:4000/chatSend',
+                url: 'https://mindwave-server.vercel.app/chatSend',
                 params: {},
                 data: { chatUser: userChat, IdDB: _id, idChatAi: _idAi },
                 headers: {

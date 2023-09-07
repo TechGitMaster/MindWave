@@ -13,7 +13,7 @@ const App = () => {
         
          const obj = {
              method: 'POST',
-             url: 'http://localhost:4000/validate',
+             url: 'https://mindwave-server.vercel.app/validate',
              params: {},
              data: {},
              headers:{

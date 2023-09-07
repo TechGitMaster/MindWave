@@ -23,7 +23,7 @@ const LeftSideBar = ({ btnSelectedTopic, newChat, setLeftSideCon, windowSize }: 
             try{
                 let obj = {
                     method: 'POST',
-                    url: 'http://localhost:4000/validate',
+                    url: 'https://mindwave-server.vercel.app/validate',
                     params: {},
                     data: {},
                     headers: {
@@ -57,7 +57,7 @@ const LeftSideBar = ({ btnSelectedTopic, newChat, setLeftSideCon, windowSize }: 
         try{
             const obj = {
                 method: 'DELETE',
-                url: 'http://localhost:4000/delete',
+                url: 'https://mindwave-server.vercel.app/delete',
                 params: {},
                 data: { id: _id },
                 headers: {
@@ -71,7 +71,7 @@ const LeftSideBar = ({ btnSelectedTopic, newChat, setLeftSideCon, windowSize }: 
             if(data.success){
                 newChat();
                 if(windowSize <= 1200) setLeftSideCon(false);
-                
+
                 dispatch({ type: CHATALL_LOADING });
 
                 setTimeout(() => {

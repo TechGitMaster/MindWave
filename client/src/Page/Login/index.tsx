@@ -16,7 +16,7 @@ const Login = () => {
             try{
                 let obj = {
                     method: 'POST',
-                    url: 'http://localhost:4000/login',
+                    url: 'https://mindwave-server.vercel.app/login',
                     params: {},
                     data: { email: emailTF },
                     headers: {
