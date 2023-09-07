@@ -14,7 +14,7 @@ const Home = () => {
     const scrollRef = useRef(null);
 
     const [fromStart, setFromStart] = useState<boolean>(false);
-    const [request, setRequest] = useState<boolean>(false);
+    const [request, setRequest] = useState<number>(1);
     const [_id, set_Id] = useState<string>('');
     const [_idAi, set_IdAi] = useState<string>('');
     const [chatMessage, setChatMessage] = useState<Array<{ role: string, chat: string }>>([]);
@@ -39,9 +39,9 @@ const Home = () => {
 
 
     const btnSelectedTopic = async (_ids: string) => {
-        if(!request && _id !== _ids){
+        if(request === 1 && _id !== _ids){
             set_Id((prev: string) => _ids);
-            setRequest((prev: boolean) => !prev);
+            setRequest((prev: number) => 3);
             setChatMessage((prev: Array<{ role: string, chat: string }>) => []);
 
             try{
@@ -61,7 +61,7 @@ const Home = () => {
                 if(data.success){
                     set_IdAi((prev) => data.idChatAi);
                     setFromStart(true);
-                    setRequest((prev) => !prev);
+                    setRequest((prev) => 1);
                     setChatMessage((prev: any) => data.chat);
 
                     setTimeout(() => {
@@ -79,8 +79,8 @@ const Home = () => {
     
     const btnSend = async () => {
 
-        if(chatRef.current.value.trim().length > 0 && !request){
-            setRequest((prev) => !prev);
+        if(chatRef.current.value.trim().length > 0 && request === 1){
+            setRequest((prev) => 2);
 
             const userChat = chatRef.current.value.toString();
             chatRef.current.value = '';
@@ -109,7 +109,7 @@ const Home = () => {
                 if(data.success){
                     set_IdAi((prev) => data.idChatAi);
                     set_Id((prev) => data.id);
-                    setRequest((prev) => !prev);
+                    setRequest((prev) => 1);
                     setChatMessage((prev: any) => [...prev, { role: 'assistant', chat: data.chat }]);
 
                     setTimeout(() => {
@@ -141,7 +141,7 @@ const Home = () => {
     const newChat = () => {
         set_Id('');
         set_IdAi('');
-        setRequest(false);
+        setRequest(1);
         setChatMessage([]);
         setFromStart(false);
     }
@@ -228,8 +228,8 @@ const Home = () => {
                                 <button 
                                     onClick={ btnSend }
                                     className='w-[90%] text-white rounded-[15px] md:text-[15px] text-[14px] py-2 my-2' 
-                                    style={{ background: !request ? '#19C37D': '#202120' }}
-                                >{ !request ? 'Send': 'Sending...' }</button>
+                                    style={{ background: request === 1 ? '#19C37D': '#202120' }}
+                                >{ request === 1 ? 'Send': request === 2 ? 'Sending...':'Loading...' }</button>
                             </div>
 
                             <p className='md:px-[100px] md:text-[13px] text-[14px] text-[#EDDEDE] text-center my-3'>Free Research Preview. MindWave may produce inaccurate information about people, places, or facts.</p>
