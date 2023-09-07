@@ -3,6 +3,9 @@ import MindWave from '../Images/PNG/brainwave.png';
 import Resize from '../Images/PNG/resize.png';
 import AI from '../Images/PNG/ai.png';
 import User from '../Images/PNG/user.png';
+import Message from '../Images/PNG/message.png';
+import Trash from '../Images/PNG/trash.png';
+import Empty from '../Images/PNG/empty.png';
 
 const Ani = require('../Images/PNG/ani.gif');
 
@@ -13,5 +16,8 @@ export {
     Resize,
     AI,
     User,
-    Ani
+    Ani,
+    Message,
+    Trash,
+    Empty
 }

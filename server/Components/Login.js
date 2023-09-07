@@ -6,23 +6,6 @@ const Schema_Accounts = Accounts_schema();
 const Auth_D = require('../Authentication/index');
 
 
-const { OpenAI } = require('openai');
-
-const openai = new OpenAI({
-    apiKey: process.env.API_KEY
-});
-
-router.get('/try', async (req, res) => {
-
-    let data = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
-        messages: [{ role: 'assistant', content: 'Say this is a test' }],
-    });
-
-    res.json({ data: data.choices });
-});
-
-
 //Login_____________________________________________
 router.post('/login', async (req, res) => {
     const { email } = req.body;
@@ -32,7 +15,7 @@ router.post('/login', async (req, res) => {
 
         let jwts = '';
         if(emailF != null){
-            jwts = jwt.sign({ email: emailF }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5h' });
+            jwts = jwt.sign({ email: emailF.email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5h' });
 
             res.json({ success: true, token: jwts });
         }else{
@@ -44,7 +27,7 @@ router.post('/login', async (req, res) => {
                     return;
                 }
 
-                jwts = jwt.sign({ email: emailF }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5h' }); 
+                jwts = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5h' }); 
                 res.json({ success: true, token: jwts });
             })
         }
@@ -57,7 +40,7 @@ router.post('/login', async (req, res) => {
 
 //Validating________________________________________
 router.post('/validate', Auth_D, (req, res) => {
-    res.json({ success: true });
+    res.json({ success: true, data: req.token });
 })
 
 
