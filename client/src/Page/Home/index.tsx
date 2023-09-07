@@ -19,7 +19,7 @@ const Home = () => {
     const [_idAi, set_IdAi] = useState<string>('');
     const [chatMessage, setChatMessage] = useState<Array<{ role: string, chat: string }>>([]);
 
-    const [leftSideCon, setLeftSideCon] = useState<boolean>(true);
+    const [leftSideCon, setLeftSideCon] = useState<boolean>(window.innerWidth >= 1200);
     const [windowSize, setWindowSize] = useState(window.innerWidth);
 
 
@@ -31,7 +31,7 @@ const Home = () => {
         };
         
         window.addEventListener('resize', handleResize);
-    
+        
         return () => {
             window.removeEventListener('resize', handleResize);
         };
