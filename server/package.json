@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "node": "echo \"Error: no test specified\" && nodemon index.js"
+    "node": "\"use 'node' when uploading to vercel and 'nodemon' for local\" node index"
   },
   "keywords": [],
   "author": "",

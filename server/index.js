@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 //2. Also delete "headers" in vercel.json if have an error when uploading to vercel________________________
 const cors = require('cors');
 app.use(cors({
-    origin: ['http://localhost:3000', '']
+    origin: ['http://localhost:3000', 'https://mindwave.vercel.app']
 }));
 
 
@@ -28,9 +28,9 @@ database();
 
 
 //this is only for local___________________________________
-mongoose.connection.once('open', () => { 
+/*mongoose.connection.once('open', () => { 
     app.listen(4000 || process.env.PORT)    
-});
+});*/
 
 
 
