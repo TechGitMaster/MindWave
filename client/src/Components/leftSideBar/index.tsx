@@ -16,7 +16,7 @@ const LeftSideBar = ({ btnSelectedTopic, newChat, setLeftSideCon, windowSize }: 
         dispatch({ type: CHATALL_LOADING })
         setTimeout(() => {
             dispatch({ type: CHATALL_GET });
-        }, 500);
+        }, 200);
 
 
         const getInfo = async () => {
@@ -76,7 +76,7 @@ const LeftSideBar = ({ btnSelectedTopic, newChat, setLeftSideCon, windowSize }: 
 
                 setTimeout(() => {
                     dispatch({ type: CHATALL_GET });
-                }, 2000);
+                }, 200);
             }else{
                 window.location.reload();
             }

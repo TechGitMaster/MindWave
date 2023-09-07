@@ -139,11 +139,13 @@ const Home = () => {
 
     //New chat__________________________________________________________
     const newChat = () => {
-        set_Id('');
-        set_IdAi('');
-        setRequest(1);
-        setChatMessage([]);
-        setFromStart(false);
+        if(request === 1){
+            set_Id('');
+            set_IdAi('');
+            setRequest(1);
+            setChatMessage([]);
+            setFromStart(false);
+        }
     }
 
     return (
