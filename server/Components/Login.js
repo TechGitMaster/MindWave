@@ -21,13 +21,13 @@ router.post('/login', async (req, res) => {
         }else{
             new Schema_Accounts({
                 email: email
-            }).save().then(async (err, reD) => {
+            }).save().then(async (data, err) => {
                 if(err){
                     res.json({ success: false });
                     return;
                 }
 
-                jwts = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5h' }); 
+                jwts = jwt.sign({ email: data.email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5h' }); 
                 res.json({ success: true, token: jwts });
             })
         }
